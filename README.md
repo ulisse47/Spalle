@@ -1,2 +1,0 @@
-# Spalle
-Ponti 
