@@ -1,0 +1,79 @@
+package progetto.model.util;
+
+/**
+ * <p>Title: </p>
+ * <p>Description: </p>
+ * <p>Copyright: Copyright (c) 2005</p>
+ * <p>Company: </p>
+ * @author not attributable
+ * @version 1.0
+ */
+
+public class FondazioneSuperficiale
+    extends SistemaDiFunzioni {
+  double Bx, By;
+  double[] w0;
+
+  public FondazioneSuperficiale(double Bx, double By, double [] w0) {
+    this.Bx = Bx;
+    this.By = By;
+    this.w0=w0;
+  }
+
+
+  public double getFi(double[] x, int n) throws java.lang.Exception{
+
+    double[] F = getValori(x);
+    return F[n];
+
+  }
+
+
+  public double getNorma(double[] x) throws java.lang.Exception {
+
+    double n=0;
+    double[] F = getValori(x);
+
+    for(int i=0;i<x.length;i++){
+      n+= F[i]*F[i];
+    }
+
+    return Math.pow(n,.5);
+
+ //   throw new java.lang.UnsupportedOperationException(
+ //       "Method getNorma() not yet implemented.");
+
+  }
+
+
+
+  public double[] getValori(double[] x) throws java.lang.Exception {
+
+    double A = x[0]*x[1]/6;
+    double B = x[1]*Math.pow((x[0]-Bx),3)/(6*x[0]*x[0]);
+    double C = x[0]*Math.pow((x[1]-By),3)/(6*x[1]*x[1]);
+    double[] F=new double [2];
+
+    if (x[0]<=Bx) B=0;
+    if (x[1]<=By) C=0;
+
+    double V =A-B-C;
+
+    double Sn = A*x[0]/4-B*(Bx+(x[0]-Bx)/4)-C*(x[0]*(x[1]-By)/(4*x[1]));
+    double Sz = A*x[1]/4-B*(x[1]*(x[0]-Bx)/(4*x[0]))-C*(By+(x[1]-By)/4);
+
+    F[0]=Sn/V-w0[0];
+    F[1]=Sz/V-w0[1];
+
+  //  throw new java.lang.UnsupportedOperationException(
+   //     "Method getValori() not yet implemented.");
+
+    return F;
+
+  }
+
+  public double getV(double[] x){
+  return x[0]*x[1]/6;
+  }
+
+}

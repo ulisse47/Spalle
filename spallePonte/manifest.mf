@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+OpenIDE-Module: it.ccprogetti.spalleponte/1
+OpenIDE-Module-Install: it/ccprogetti/spalleponte/netbeans/installer/Installer.class
+OpenIDE-Module-Layer: it/ccprogetti/spalleponte/layer.xml
+OpenIDE-Module-Localizing-Bundle: it/ccprogetti/spalleponte/Bundle.properties
+OpenIDE-Module-Requires: org.netbeans.api.javahelp.Help
+OpenIDE-Module-Specification-Version: 2.0
+

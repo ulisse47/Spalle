@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.apache.commons.beanutils/1
+OpenIDE-Module-Localizing-Bundle: org/apache/commons/beanutils/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.6
+

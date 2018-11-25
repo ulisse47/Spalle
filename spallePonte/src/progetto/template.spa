@@ -1,0 +1,46 @@
+<progetto.model.bean.Spalla>
+  <nome>Progetto</nome>
+  <carichi/>
+  <appoggi/>
+  <combinazioni/>
+  <verticaliIndagate/>
+  <conSpintaAttiva>false</conSpintaAttiva>
+  <k__static>0.3</k__static>
+  <k__dinamic>0.0</k__dinamic>
+  <k__static__dinamic>0.0</k__static__dinamic>
+  <q__carico>10.0</q__carico>
+  <gammaTerreno>18.0</gammaTerreno>
+  <gammaCLS>25.0</gammaCLS>
+  <h__terreno>11.0</h__terreno>
+  <h__terrenoValle>1.0</h__terrenoValle>
+  <deltaTerreno>20.0</deltaTerreno>
+  <spintaVerticale>false</spintaVerticale>
+  <palificata/>
+  <bxFonda>15.0</bxFonda>
+  <byFonda>10.0</byFonda>
+  <spFonda>2.0</spFonda>
+  <alfa>0.0</alfa>
+  <x__verifica>0.0</x__verifica>
+  <y__verifica>0.0</y__verifica>
+  <xgElevazione>0.0</xgElevazione>
+  <ygElevazione>2.0</ygElevazione>
+  <bxElevazione>10.0</bxElevazione>
+  <byElevazione>2.0</byElevazione>
+  <hsElevazione>8.0</hsElevazione>
+  <hPara>3.0</hPara>
+  <spPara>0.8</spPara>
+  <dyPara>0.0</dyPara>
+  <lMuri>5.0</lMuri>
+  <spMuri>0.7</spMuri>
+  <kpali>0.0</kpali>
+  <agS>0.0</agS>
+  <Lpalo>20.0</Lpalo>
+  <Zpalo>0.0</Zpalo>
+  <Dpalo>1.0</Dpalo>
+  <Zfalda>0.0</Zfalda>
+  <k_static_auto>false</k_static_auto>
+  <fi_Terreno>35</fi_Terreno>
+
+
+
+</progetto.model.bean.Spalla>

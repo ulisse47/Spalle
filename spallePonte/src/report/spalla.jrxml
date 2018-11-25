@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="spalla"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+
+	<field name="appoggi" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[appoggi]]></fieldDescription>
+	</field>
+	<field name="bxElevazione" class="java.lang.Double">
+		<fieldDescription><![CDATA[bxElevazione]]></fieldDescription>
+	</field>
+	<field name="bxFonda" class="java.lang.Double">
+		<fieldDescription><![CDATA[bxFonda]]></fieldDescription>
+	</field>
+	<field name="byElevazione" class="java.lang.Double">
+		<fieldDescription><![CDATA[byElevazione]]></fieldDescription>
+	</field>
+	<field name="byFonda" class="java.lang.Double">
+		<fieldDescription><![CDATA[byFonda]]></fieldDescription>
+	</field>
+	<field name="carichi" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[carichi]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="combinazioni" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[combinazioni]]></fieldDescription>
+	</field>
+	<field name="conSpintaAttiva" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[conSpintaAttiva]]></fieldDescription>
+	</field>
+	<field name="deltaTerreno" class="java.lang.Double">
+		<fieldDescription><![CDATA[deltaTerreno]]></fieldDescription>
+	</field>
+	<field name="gammaCLS" class="java.lang.Double">
+		<fieldDescription><![CDATA[gammaCLS]]></fieldDescription>
+	</field>
+	<field name="gammaTerreno" class="java.lang.Double">
+		<fieldDescription><![CDATA[gammaTerreno]]></fieldDescription>
+	</field>
+	<field name="h_terreno" class="java.lang.Double">
+		<fieldDescription><![CDATA[h_terreno]]></fieldDescription>
+	</field>
+	<field name="h_terrenoValle" class="java.lang.Double">
+		<fieldDescription><![CDATA[h_terrenoValle]]></fieldDescription>
+	</field>
+	<field name="hsElevazione" class="java.lang.Double">
+		<fieldDescription><![CDATA[hsElevazione]]></fieldDescription>
+	</field>
+	<field name="k_dinamic" class="java.lang.Double">
+		<fieldDescription><![CDATA[k_dinamic]]></fieldDescription>
+	</field>
+	<field name="k_static" class="java.lang.Double">
+		<fieldDescription><![CDATA[k_static]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[nome]]></fieldDescription>
+	</field>
+	<field name="palificata" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[palificata]]></fieldDescription>
+	</field>
+	<field name="q_carico" class="java.lang.Double">
+		<fieldDescription><![CDATA[q_carico]]></fieldDescription>
+	</field>
+	<field name="spFonda" class="java.lang.Double">
+		<fieldDescription><![CDATA[spFonda]]></fieldDescription>
+	</field>
+	<field name="spMuri" class="java.lang.Double">
+		<fieldDescription><![CDATA[spMuri]]></fieldDescription>
+	</field>
+	<field name="spPara" class="java.lang.Double">
+		<fieldDescription><![CDATA[spPara]]></fieldDescription>
+	</field>
+	<field name="spintaVerticale" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[spintaVerticale]]></fieldDescription>
+	</field>
+	<field name="x_verifica" class="java.lang.Double">
+		<fieldDescription><![CDATA[x_verifica]]></fieldDescription>
+	</field>
+	<field name="xgElevazione" class="java.lang.Double">
+		<fieldDescription><![CDATA[xgElevazione]]></fieldDescription>
+	</field>
+	<field name="y_verifica" class="java.lang.Double">
+		<fieldDescription><![CDATA[y_verifica]]></fieldDescription>
+	</field>
+	<field name="ygElevazione" class="java.lang.Double">
+		<fieldDescription><![CDATA[ygElevazione]]></fieldDescription>
+	</field>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="50"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="50"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="30"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="100"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="27"
+						y="12"
+						width="191"
+						height="20"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[pesi specifici]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="252"
+						y="16"
+						width="132"
+						height="24"
+						key="textField-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{gammaCLS}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="247"
+						y="54"
+						width="147"
+						height="31"
+						key="textField-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{gammaTerreno}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="30"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="50"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<lastPageFooter>
+			<band height="50"  isSplitAllowed="true" >
+			</band>
+		</lastPageFooter>
+		<summary>
+			<band height="50"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

@@ -1,0 +1,890 @@
+package progetto.model.util;
+
+import java.util.ArrayList;
+
+import progetto.model.bean.Appoggio;
+import progetto.model.bean.Carico;
+import progetto.model.bean.CaricoForze;
+import progetto.model.bean.Combinazione;
+import progetto.model.bean.Spalla;
+import progetto.model.bean.SpallaManager;
+
+/**
+ * <p>Title: </p>
+ * <p>Description: </p>
+ * <p>Copyright: Copyright (c) 2005</p>
+ * <p>Company: </p>
+ * @author not attributable
+ * @version 1.0
+ */
+
+public class Calcoli {
+
+  //materiali
+  double gammaCls;
+
+  //Fonda
+  double BxCiabatta, ByCiabatta, Spf;
+
+  //muri d'ala
+  double BmuriAla, SpMuriAla, HmuriAla;
+
+  //paraghiaie
+  double SpParaghiaia, Hparaghiaia;
+
+  //spalla
+  double BxSpalla, BySpalla, Hspalla;
+  double dySpalla, dxSpalla;
+
+  //terreno
+  double Hterreno;
+  double HterrenoValle;
+  double gammaTerreno;
+  double qSovraccarico;
+  double Kas, Kad;
+  double HspintaDinamica; //altezza appicazione spinta dinamica
+
+  //Appoggi
+  double[][][] Fappoggi;
+  double[][] xAppoggi;
+  private int nCarichi;
+  private int nAppoggi;
+
+  //palificata
+  private int nPali;
+  private double[][] pali;
+
+  //sezioni di verifica
+  double xVerifica;
+  double yVerifica;
+
+  //combinazioni
+  double[][] combinazioni;
+
+  public Calcoli() {
+    getVariabiliLocali();
+  }
+
+  private void getVariabiliLocali() {
+    //NB tutto in Newton e millimetri
+    Spalla spalla = SpallaManager.getInstance().getCurrentSpalla();
+    int prop = 10;
+
+    //fonda
+    BxCiabatta = spalla.getBxFonda() * prop;
+    ByCiabatta = spalla.getByFonda() * prop;
+    Spf = spalla.getSpFonda() * prop;
+
+    //muri d'ala
+    BmuriAla = spalla.getLMuri() * prop;
+    SpMuriAla = spalla.getSpMuri() * prop;
+
+    //paraghiaie
+    SpParaghiaia = spalla.getSpPara() * prop;
+    Hparaghiaia = spalla.getHPara() * prop;
+
+    //spalla
+    BxSpalla = spalla.getBxElevazione() * prop;
+    BySpalla = spalla.getByElevazione() * prop;
+    Hspalla = spalla.getHsElevazione() * prop;
+    dySpalla = spalla.getYgElevazione() * prop;
+    dxSpalla = spalla.getXgElevazione() * prop;
+
+    //Materiali
+    gammaCls = spalla.getGammaCLS() / 1000000;
+
+    //terreno
+    Hterreno = spalla.getH_terreno() * prop;
+    HterrenoValle = spalla.getH_terrenoValle() * prop;
+    gammaTerreno = spalla.getGammaTerreno() / 1000000;
+    qSovraccarico = spalla.getQ_carico() / 1000;
+    Kas = spalla.getK_static();
+    Kad = spalla.getK_dinamic();
+    HspintaDinamica = spalla.getH_spintaDinamic();
+
+    //grandezze derivate
+    HmuriAla = Hspalla + Hparaghiaia;
+
+    //Fappoggi
+    ArrayList carichi = spalla.getCarichi();
+    ArrayList appoggi = spalla.getAppoggi();
+    nCarichi = carichi.size();
+    nAppoggi = appoggi.size();
+    Carico carico;
+    ArrayList forze;
+    CaricoForze forza;
+    Fappoggi = new double[5][nAppoggi][nCarichi];
+    for (int i = 0; i < carichi.size(); i++) {
+      carico = (Carico) carichi.get(i);
+      forze = carico.getForzeAppoggi();
+      for (int z = 0; z < forze.size(); z++) {
+        forza = (CaricoForze) forze.get(z);
+        Fappoggi[0][z][i] = forza.getFx();
+        Fappoggi[1][z][i] = forza.getFy();
+        Fappoggi[2][z][i] = forza.getFz();
+        Fappoggi[3][z][i] = forza.getMx();
+        Fappoggi[4][z][i] = forza.getMy();
+      }
+    }
+
+    //xAppoggi;
+    Appoggio appoggio;
+    xAppoggi = new double[3][nAppoggi];
+    for (int k = 0; k < nAppoggi; k++) {
+      appoggio = (Appoggio) appoggi.get(k);
+      xAppoggi[0][k] = appoggio.getX()*prop;
+      xAppoggi[1][k] = appoggio.getY()*prop;
+      xAppoggi[2][k] = appoggio.getZ()*prop;
+    }
+
+    //combinazioni
+    ArrayList combinazioniList = spalla.getCombinazioni();
+    Combinazione combinazione;
+    ArrayList combos;
+    combinazioni = new double[3 + nCarichi][combinazioniList.size()];
+    for (int q = 0; q < combinazioniList.size(); q++) {
+      combinazione = (Combinazione) combinazioniList.get(q);
+      combos = combinazione.getCombo();
+      for (int r = 0; r < combos.size(); r++) {
+        combinazioni[r][q] = ( (Double) combos.get(r)).doubleValue();
+      }
+    }
+
+    xVerifica = 0;
+    yVerifica = 0;
+  }
+
+//calcola momenti M1 ciabatta
+  public double[] getM1CiabattaFondazione() {
+    double[] M1 = {
+        0, 0, 0, 0, 0};
+    return M1;
+  }
+
+  //calcola momenti M2 ciabatta
+  public double[] getM2CiabattaFondazione() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    //Forza assiale
+    M[2] = BxCiabatta * ByCiabatta * Spf * gammaCls;
+    return M;
+  }
+
+  //calcola momenti M1 muri d'ala
+  public double[] getM1MuriAla() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    return M;
+  }
+
+  //calcola momenti M2 muri d'ala
+  public double[] getM2MuriAla() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+
+    double dgy = -BySpalla / 2 - BmuriAla / 2 + dySpalla;
+
+    //Forza assiale
+    M[2] = 2 * BmuriAla * SpMuriAla * HmuriAla * gammaCls;
+    //Momenti Mx
+    M[3] = -M[2] * dgy;
+    //Momenti My
+    M[4] = M[2] * dxSpalla;
+    return M;
+  }
+
+  //calcola momenti M1 spalla
+  public double[] getM1Spalla() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    //Forza assiale
+    M[2] = Hspalla * BxSpalla * BySpalla * gammaCls;
+    return M;
+  }
+
+//calcola momenti M2 spalla
+  public double[] getM2Spalla() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+//Forza assiale
+    M[2] = Hspalla * BxSpalla * BySpalla * gammaCls;
+//momento Mx
+    M[3] = -M[2] * dySpalla;
+//momento My
+    M[4] = M[2] * dxSpalla;
+    return M;
+  }
+
+  //calcola momenti M1 paraghiaia
+  public double[] getM1Paraghiaia() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double dgy = -BySpalla / 2 + SpParaghiaia / 2;
+
+//Forza assiale
+    M[2] = Hparaghiaia * BxSpalla * SpParaghiaia * gammaCls;
+//momento Mx
+    M[3] = -M[2] * dgy;
+    return M;
+  }
+
+  //calcola momenti M2 paraghiaia
+  public double[] getM2Paraghiaia() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double dgy = -BySpalla / 2 + SpParaghiaia / 2 + dySpalla;
+    double dgx = dxSpalla;
+
+//Forza assiale
+    M[2] = Hparaghiaia * BxSpalla * SpParaghiaia * gammaCls;
+//momento Mx
+    M[3] = -M[2] * dgy;
+    //momento My
+    M[4] = M[2] * dgx;
+
+    return M;
+  }
+
+  //calcola momenti M1 terreno monte
+  public double[] getM1TerrenoMonte() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    return M;
+  }
+
+  //calcola momenti M2 terreno monte
+  public double[] getM2TerrenoMonte() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double L = ByCiabatta / 2 + dySpalla - BySpalla / 2;
+    double dgy = - (ByCiabatta / 2 - L / 2);
+
+//Forza assiale
+    M[2] = Hterreno * (L * BxCiabatta - 2 * SpMuriAla * BmuriAla) *
+        gammaTerreno;
+//momento Mx
+    M[3] = -M[2] * dgy;
+
+    return M;
+  }
+
+  //calcola momenti M1 sovraccarico (solo spinta verticale)
+  public double[] getM1Sovraccarico() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    return M;
+  }
+
+  //calcola momenti M2 sovraccarico (solo spinta verticale)
+  public double[] getM2Sovraccarico() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+
+    double L = ByCiabatta / 2 + dySpalla - BySpalla / 2;
+    double dgy = - (ByCiabatta / 2 - L / 2);
+
+    //Forza assiale
+    M[2] = (L * BxCiabatta) * qSovraccarico;
+//momento Mx
+    M[3] = -M[2] * dgy;
+
+    return M;
+  }
+
+  //calcola momenti M1 terreno valle
+  public double[] getM1TerrenoValle() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    return M;
+  }
+
+//calcola momenti M2 terreno valle
+  public double[] getM2TerrenoValle() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+
+    double L = ByCiabatta /2 -dySpalla - BySpalla / 2;
+    double dgy = (ByCiabatta / 2 - L / 2);
+
+    //Forza assiale
+    M[2] = HterrenoValle * (L * BxCiabatta) * gammaTerreno;
+//momento Mx
+    M[3] = -M[2] * dgy;
+
+    return M;
+  }
+
+  //calcola momenti M1 spinta statica (con sovraccarico)
+  public double[] getM1SpintaStatica() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double L = BxSpalla - 2 * SpMuriAla;
+    double sigTer = (Hterreno * gammaTerreno + qSovraccarico) * Kas;
+    double F = 0.5 * L * Hterreno * sigTer;
+
+//forza Fy
+    M[1] = F;
+//momento Mx
+    M[3] = -F * Hterreno / 3;
+
+    return M;
+  }
+
+  //calcola momenti M1 spinta dinamica (con sovraccarico)
+  public double[] getM1SpintaDianamica() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double L = BxSpalla - 2 * SpMuriAla;
+    double sigTer = (Hterreno * gammaTerreno + qSovraccarico) * Kad;
+    double F = 1 / 2 * L * Hterreno * sigTer;
+
+//forza Fy
+    M[1] = F;
+//momento Mx
+    M[3] = -F * Hterreno * HspintaDinamica;
+
+    return M;
+  }
+
+  //calcola momenti M2 spinta dinamica (con sovraccarico)
+  public double[] getM2SpintaDianamica() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double L = BxSpalla - 2 * SpMuriAla;
+    double sigTer = (Hterreno * gammaTerreno + qSovraccarico) * Kad;
+    double F = 1 / 2 * L * Hterreno * sigTer;
+
+//forza Fy
+    M[1] = F;
+//momento Mx
+    M[3] = -F * (Hterreno * HspintaDinamica + Spf);
+
+    return M;
+  }
+
+  //calcola momenti M2 spinta statica (con sovraccarico)
+  public double[] getM2SpintaStatica() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double L = BxSpalla - 2 * SpMuriAla;
+    double sigTer = (Hterreno * gammaTerreno + qSovraccarico) * Kas;
+    double F = 0.5 * L * Hterreno * sigTer;
+
+//forza Fy
+    M[1] = F;
+//momento Mx
+    M[3] = -F * (Hterreno / 3 + Spf);
+    return M;
+  }
+
+  //calcola momenti M1 caichi appoggi
+  public double[] getM1CarichiAppoggi(int i) {
+    double[] M = {
+        0, 0, 0, 0, 0};
+
+    //forza Fx,Fy,Fz
+    for (int z = 0; z < nAppoggi; ++z) {
+      M[0] = +Fappoggi[0][z][i];
+      M[1] = +Fappoggi[1][z][i];
+      M[2] = +Fappoggi[2][z][i];
+      //momento Mx
+      M[3] += Fappoggi[3][z][i] - Fappoggi[1][z][i] * xAppoggi[2][z] -
+          Fappoggi[2][z][i] * xAppoggi[1][z];
+
+      //momento My
+      M[4] += Fappoggi[4][z][i] + Fappoggi[0][z][i] * xAppoggi[2][z] +
+          Fappoggi[2][z][i] * xAppoggi[0][z];
+    }
+
+    return M;
+  }
+
+//calcola momenti M2 caichi appoggi
+  public double[] getM2CarichiAppoggi(int i) {
+    double[] M = {
+        0, 0, 0, 0, 0};
+
+//forza Fx,Fy,Fz
+    for (int z = 0; z < nAppoggi; ++z) {
+      M[0] += Fappoggi[0][z][i];
+      M[1] += Fappoggi[1][z][i];
+      M[2] += Fappoggi[2][z][i];
+//momento Mx
+      M[3] += Fappoggi[3][z][i] - Fappoggi[1][z][i] * (xAppoggi[2][z] + Spf) -
+          Fappoggi[2][z][i] * (xAppoggi[1][z] + dySpalla);
+
+//momento My
+      M[4] += Fappoggi[4][z][i] + Fappoggi[0][z][i] * (xAppoggi[2][z] + Spf) +
+          Fappoggi[2][z][i] * (xAppoggi[0][z] + dxSpalla);
+    }
+    return M;
+  }
+
+  //calcola momenti M2 caichi appoggi
+  public double[] getM2CarichiAppoggi() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double[] Mi;
+
+    for (int i = 0; i < nCarichi; ++i) {
+      Mi = getM2CarichiAppoggi(i);
+      for (int j = 0; j < 5; ++j) {
+        M[j] += Mi[j];
+      }
+    }
+    return M;
+  }
+
+  //calcola momenti M1 caichi appoggi
+  public double[] getM1CarichiAppoggi() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double[] Mi;
+
+    for (int i = 0; i < nCarichi; ++i) {
+      Mi = getM1CarichiAppoggi(i);
+      for (int j = 0; j < 5; ++j) {
+        M[j] += Mi[j];
+      }
+    }
+    return M;
+  }
+
+  //calcola momenti M1 caichi permanenti
+  public double[] getM1Permanenti() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double[] Mi;
+
+    Mi = getM1CiabattaFondazione();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM1MuriAla();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM1Spalla();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM1Paraghiaia();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM1TerrenoMonte();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM1TerrenoValle();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM1Sovraccarico();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    return M;
+  }
+
+  //calcola momenti M2 carichi permanenti
+  public double[] getM2Permanenti() {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double[] Mi;
+
+    Mi = getM2CiabattaFondazione();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM2MuriAla();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM2Spalla();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM2Paraghiaia();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM2TerrenoMonte();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM2TerrenoValle();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    Mi = getM2Sovraccarico();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j];
+    }
+
+    return M;
+  }
+
+  //calcola momenti M1 della combinazione i-esima
+  public double[] getM1Combo(int i) {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double[] Mi;
+
+    Mi = getM1Permanenti();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j] * combinazioni[0][i];
+    }
+
+    Mi = getM1SpintaStatica();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j] * combinazioni[1][i];
+    }
+
+    Mi = getM1SpintaDianamica();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j] * combinazioni[2][i];
+    }
+
+//carichi appoggi
+    for (int k = 0; k < nCarichi; ++k) {
+      Mi = getM1CarichiAppoggi(k);
+      for (int j = 0; j < 5; ++j) {
+        M[j] += Mi[j] * combinazioni[3 + k][i];
+      }
+    }
+    return M;
+
+  }
+
+  //calcola momenti M2 della combinazione i-esima
+  public double[] getM2Combo(int i) {
+    double[] M = {
+        0, 0, 0, 0, 0};
+    double[] Mi;
+
+    Mi = getM2Permanenti();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j] * combinazioni[0][i];
+    }
+
+    Mi = getM2SpintaStatica();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j] * combinazioni[1][i];
+    }
+
+    Mi = getM2SpintaDianamica();
+    for (int j = 0; j < 5; ++j) {
+      M[j] += Mi[j] * combinazioni[2][i];
+    }
+
+//carichi appoggi
+    for (int k = 0; k < nCarichi; ++k) {
+      Mi = getM2CarichiAppoggi(k);
+      for (int j = 0; j < 5; ++j) {
+        M[j] += Mi[j] * combinazioni[3 + k][i];
+      }
+    }
+    return M;
+  }
+
+  public double[] getNpalificata(int i) {
+    double[] N = new double[nPali];
+    double[] M2;
+    double x, y, d, A;
+    double Jx = 0;
+    double Jy = 0;
+
+    //calcola Jx,Jy
+    for (int j = 0; j < nPali; ++j) {
+      x = pali[0][j];
+      y = pali[1][j];
+      d = pali[2][j];
+      A = d * d / 4 * Math.PI;
+      double Jiy = A * x * x + Math.PI * d * d * d * d / 64;
+      double Jix = A * y * y + Math.PI * d * d * d * d / 64;
+      Jx += Jix;
+      Jy += Jiy;
+    }
+
+    //carica le sollecitazioni
+    M2 = getM2Combo(i);
+
+    //calcola le sollecitazioni
+    for (int j = 0; j < nPali; ++j) {
+      x = pali[0][j];
+      y = pali[1][j];
+      d = pali[2][j];
+      A = d * d / 4 * Math.PI;
+      N[j] = M2[2] / nPali - A * y * M2[3] / Jy + A * x * M2[4] / Jx;
+    }
+
+    return N;
+
+  }
+
+  //calcola i momenti per la verifica della ciabatta
+  public double[][] getMverifica(int i) {
+
+    if (nPali == 0) {
+      return getMverificaPalificata(i);
+    }
+    else {
+      return getMverificaFondaSuperficiale(i);
+    }
+
+
+  }
+
+  private double[][] getMverificaFondaSuperficiale(int i) {
+
+    double[] var = get_sigma_wx_wy(i);
+    double s1 = var[0];
+    double w = var[1];
+    double v = var[2];
+    double[] M2 = getM2Combo(i);
+    double Mx = M2[3];
+    double My = M2[4];
+    double[][] M=new double[2][2];
+
+
+    double dx, dy;
+
+    if (Mx < 0) {
+      dy = ByCiabatta / 2 - dySpalla - yVerifica;
+    }
+    else {
+      dy = ByCiabatta / 2 + dySpalla - yVerifica;
+    }
+
+    if (My > 0) {
+      dx = BxCiabatta / 2 - dxSpalla - xVerifica;
+    }
+    else {
+      dx = BxCiabatta / 2 + dxSpalla - xVerifica;
+    }
+
+    if (dy > v) {
+      M[0][0] = 1 / 2 * v * s1 * (dy - v / 3);
+      M[1][0] = 1 / 2 * v * s1;
+    }
+    else {
+      double s2 = s1 * (1 - dy / v);
+      M[0][0] = s1 * dy * dy / 2 + (s1 - s2) * dy * dy / 3;
+      M[1][0] = s1 * dy + 1 / 2 * (s1 - s2) * dy;
+    }
+
+    if (dx > w) {
+      M[0][1] = 1 / 2 * w * s1 * (dx - w / 3);
+      M[1][1] = 1 / 2 * w * s1;
+    }
+    else {
+      double s2 = s1 * (1 - dx / w);
+      M[0][0] = s1 * dx * dx / 2 + (s1 - s2) * dx * dx / 3;
+      M[1][0] = s1 * dx + 1 / 2 * (s1 - s2) * dx;
+    }
+
+    return M;
+  }
+
+  //calcola i momenti per la verifica della ciabatta
+  //per palificate
+  private double[][] getMverificaPalificata(int i) {
+
+    double[] M2 = getM2Combo(i);
+    double Mx = M2[3];
+    double My = M2[4];
+    double[] Npali = getNpalificata(i);
+    double x, y, d;
+    double M[][] = new double[2][2];
+
+    if (Mx <= 0 & My >= 0) {
+      for (int j = 0; j < nPali; ++j) {
+        y = pali[1][j] - dySpalla;
+        x = pali[0][j] - dxSpalla;
+        if (y > yVerifica) {
+          M[0][0] += Npali[j] * (y - yVerifica);
+          M[1][0] += Npali[j];
+        }
+        if (x > xVerifica) {
+          M[0][1] += Npali[j] * (x - xVerifica);
+          M[1][1] += Npali[j];
+        }
+
+      }
+    }
+
+    if (Mx < 0 & My <= 0) {
+      for (int j = 0; j < nPali; ++j) {
+        y = pali[1][j] - dySpalla;
+        x = pali[0][j] - dxSpalla;
+        if (y > yVerifica) {
+          M[0][0] += Npali[j] * (y - yVerifica);
+          M[1][0] += Npali[j];
+        }
+        if (x < xVerifica) {
+          M[0][1] += Npali[j] * ( -x - xVerifica);
+          M[1][1] += Npali[j];
+        }
+
+      }
+    }
+
+    if (Mx >= 0 & My >= 0) {
+      for (int j = 0; j < nPali; ++j) {
+        y = pali[1][j] - dySpalla;
+        x = pali[0][j] - dxSpalla;
+        if (y < yVerifica) {
+          M[0][0] += Npali[j] * ( -y - yVerifica);
+          M[1][0] += Npali[j];
+        }
+        if (x > xVerifica) {
+          M[0][1] += Npali[j] * (x - xVerifica);
+          M[1][1] += Npali[j];
+        }
+
+      }
+    }
+
+    if (Mx >= 0 & My <= 0) {
+      for (int j = 0; j < nPali; ++j) {
+        y = pali[1][j] - dySpalla;
+        x = pali[0][j] - dxSpalla;
+        if (y < yVerifica) {
+          M[0][0] += Npali[j] * ( -y - yVerifica);
+          M[1][0] += Npali[j];
+        }
+        if (x < xVerifica) {
+          M[0][1] += Npali[j] * ( -x + xVerifica);
+          M[1][1] += Npali[j];
+        }
+
+      }
+    }
+
+    return M;
+  }
+
+//calcola pressione terreno
+  public double[] get_sigma_wx_wy(int i) {
+    double v[] = {
+        0, 0, 0};
+
+    double[] Mi = getM1Combo(i);
+    double N = Mi[2];
+    double Mx = Mi[3];
+    double My = Mi[4];
+    double wx, wy;
+
+    double ex = Math.abs(My / N);
+    double ey = Math.abs(Mx / N);
+
+    wx = BxCiabatta / 2 - ex;
+    wy = BxCiabatta / 2 - ey;
+
+    if (ex == 0) {
+      if (ey > ByCiabatta / 6) {
+        v[1] = 100000;
+        v[2] = (ByCiabatta / 2 - ey) * 3;
+        v[0] = 2 * N / (3 * v[2] * BxCiabatta);
+      }
+      else {
+        v[0] = N / (ByCiabatta * BxCiabatta) * (1 + 6 * ey / ByCiabatta);
+        v[1] = 100000;
+        v[2] = ByCiabatta * ByCiabatta / (12 * ey);
+      }
+
+    }
+    if (ey == 0) {
+      if (ex > BxCiabatta / 6) {
+        v[2] = 100000;
+        v[1] = (BxCiabatta / 2 - ex) * 3;
+        v[0] = 2 * N / (3 * v[1] * ByCiabatta);
+      }
+      else {
+        v[0] = N / (BxCiabatta * ByCiabatta) * (1 + 6 * ex / BxCiabatta);
+        v[2] = 100000;
+        v[1] = BxCiabatta * BxCiabatta / (12 * ex);
+      }
+
+    }
+    if (ex / BxCiabatta + ey / BxCiabatta <= .16666667) {
+      double s1 = N / (BxCiabatta * BxCiabatta) *
+          (1 + 6 * ey / BxCiabatta + 6 * ex / BxCiabatta);
+      double s2 = N / (BxCiabatta * BxCiabatta) *
+          (1 + 6 * ey / BxCiabatta - 6 * ex / BxCiabatta);
+      double s3 = N / (BxCiabatta * BxCiabatta) *
+          (1 - 6 * ey / BxCiabatta + 6 * ex / BxCiabatta);
+
+      v[0] = s1;
+      v[1] = s1 / (s1 - s2) * BxCiabatta;
+      v[2] = s1 / (s1 - s3) * BxCiabatta;
+
+      return v;
+    }
+
+    if (ex / BxCiabatta >= .5 || ey / BxCiabatta >= .5) {
+      return (new double[] {0, 0, 0});
+    }
+
+    else {
+
+      FondazioneSuperficiale F = new FondazioneSuperficiale(BxCiabatta,
+          BxCiabatta,
+          new double[] {wx, wy});
+      try {
+        double[] v2 = new double[2];
+
+        if (wx * 4 <= BxCiabatta & wy * 4 <= BxCiabatta) {
+          v2 = Matematica.ZeriFunzioni_MetodoNewton(F,
+              new double[] {BxCiabatta, BxCiabatta}
+              , 2, 10000, 0.001);
+        }
+        if (wx * 4 <= BxCiabatta & wy * 4 >= BxCiabatta) {
+          v2 = Matematica.ZeriFunzioni_MetodoNewton(F,
+              new double[] {BxCiabatta, 12 * wy}
+              , 2, 10000, 0.001);
+
+        }
+        if (wx * 4 >= BxCiabatta & wy * 4 <= BxCiabatta) {
+          v2 = Matematica.ZeriFunzioni_MetodoNewton(F,
+              new double[] {60 * wx, BxCiabatta}
+              , 2, 10000, 0.001);
+        }
+        if (wx * 4 >= BxCiabatta & wy * 4 >= BxCiabatta) {
+          v2 = Matematica.ZeriFunzioni_MetodoNewton(F,
+              new double[] {12 * wx, 12 * wy}
+              , 2, 10000, 0.001);
+        }
+
+        double V = F.getV(v2);
+        v[0] = N / V;
+        v[1] = v2[0];
+        v[2] = v2[1];
+
+        return v;
+
+      }
+      catch (Exception ecc) {
+
+      }
+
+      return v;
+    }
+
+  }
+
+}

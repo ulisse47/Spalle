@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="Edit">
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-ElaboraAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-PrintAction.shadow/it-ccprogetti-spalleponte-netbeans-actions-NewProgettoAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-NewProgettoAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-NewProgettoAction.instance/it-ccprogetti-spalleponte-netbeans-actions-PrintAction.instance" boolvalue="true"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-PrintAction.instance/it-ccprogetti-spalleponte-netbeans-actions-AddAppoggioAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddAppoggioAction.instance">
+                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/it/ccprogetti/spalleponte/netbeans/actions/images/appoggio.gif"/>
+            </file>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-AddAppoggioAction.instance/it-ccprogetti-spalleponte-netbeans-actions-AddCaricoAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddCaricoAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-AddCaricoAction.instance/it-ccprogetti-spalleponte-netbeans-actions-AddCombinazioneAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddCombinazioneAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-AddCombinazioneAction.instance/it-ccprogetti-spalleponte-netbeans-actions-AddPaloAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddPaloAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-AddPaloAction.instance/it-ccprogetti-spalleponte-netbeans-actions-DeleteCaricoAction.instance" boolvalue="true"/>
+            
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-AddCombinazioneAction.instance/it-ccprogetti-spalleponte-netbeans-actions-WizardPalificataAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-RimuoviPaliAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-WizardPalificataAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-WizardPalificataAction.instance/it-ccprogetti-spalleponte-netbeans-actions-DeleteCaricoAction.instance" boolvalue="true"/>
+            
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-CalcoloAutomaticoNqAction.instance"/>
+            
+            
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-DeleteCaricoAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-DeleteCaricoAction.instance/it-ccprogetti-spalleponte-netbeans-actions-DeleteCombinazioneAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-DeleteCombinazioneAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-DeleteCombinazioneAction.instance/it-ccprogetti-spalleponte-netbeans-actions-DeletePaloAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-DeletePaloAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-DeletePaloAction.instance/it-ccprogetti-spalleponte-netbeans-actions-EliminaAppoggioAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-EliminaAppoggioAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-EliminaAppoggioAction.instance/it-ccprogetti-spalleponte-netbeans-actions-OpenAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-OpenAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-OpenAction.instance/it-ccprogetti-spalleponte-netbeans-actions-SaveAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-RelazioneAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-SaveAction.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-SaveAction.instance/it-ccprogetti-spalleponte-netbeans-actions-SaveAsAction.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-SaveAsAction.instance"/>
+            <file name="org-openide-actions-CopyAction.instance_hidden"/>
+            <file name="org-openide-actions-CutAction.instance_hidden"/>
+            <file name="org-openide-actions-DeleteAction.instance_hidden"/>
+            <file name="org-openide-actions-FindAction.instance_hidden"/>
+            <file name="org-openide-actions-GotoAction.instance_hidden"/>
+            <file name="org-openide-actions-PasteAction.instance_hidden"/>
+            <file name="org-openide-actions-RedoAction.instance_hidden"/>
+            <file name="org-openide-actions-ReplaceAction.instance_hidden"/>
+            <file name="org-openide-actions-UndoAction.instance_hidden"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddStratoTerrenoAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-RemoveStratoAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddVerticaleAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-RemoveVerticaleAction.instance"/>
+            
+            
+        </folder>
+        <folder name="Help">
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-activation-TogliChiaveAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-activation-FiloDirettoAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-activation-FlaccovioWebAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-activation-GuidaUtenteAction.instance"/>
+            <!--<file name="it-ccprogetti-spalleponte-netbeans-actions-activation-dlgAbout.instance"/>-->
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-activation-MyAboutAction.instance"/>
+          <file name="org-netbeans-modules-welcome-ShowWelcomeAction.instance_hidden"/>
+        </folder>
+        
+        
+        
+        
+        <folder name="System">
+            <file name="org-netbeans-core-actions-JumpNextAction.instance_hidden"/>
+            <file name="org-netbeans-core-actions-JumpPrevAction.instance_hidden"/>
+            <file name="org-openide-actions-PrintAction.instance_hidden"/>
+            <file name="org-openide-actions-SaveAction.instance_hidden"/>
+            <file name="org-openide-actions-SaveAllAction.instance_hidden"/>
+        </folder>
+        <file name="View_hidden"/>
+        <folder name="Window">
+            <file name="it-ccprogetti-spalleponte-netbeans-view-CarichiViewAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-view-FondazioniViewAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-view-SpallaViewAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-view-PortanzaViewAction.instance"/>
+            <file name="org-netbeans-core-actions-GlobalPropertiesAction.instance_hidden"/>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <file name="BuildProject_hidden"/>
+        <file name="Edit_hidden"/>
+        <folder name="File">
+            <attr name="position" intvalue="100"/>
+            <file name="D-J.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-NewProgettoAction.instance"/>
+            </file>
+            <file name="Export_hidden"/>
+            <file name="Import_hidden"/>
+            <file name="Separator3.instance_hidden"/>
+            <file name="SeparatorNew.instance_hidden"/>
+            <file name="SeparatorOpen.instance_hidden"/>
+            <file name="import-export-sep.instance_hidden"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-SaveAsAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-SaveAsAction.instance"/>
+                <attr name="position" intvalue="500"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-separatorAfter.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="300"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-SaveAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-SaveAction.instance"/>
+                <attr name="position" intvalue="400"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-OpenAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-OpenAction.instance"/>
+                <attr name="position" intvalue="200"/>
+            </file>            
+            <file name="org-netbeans-modules-editor-ExportHtmlAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-openfile-OpenFileAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-openfile-RecentFileAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-print-action-PageSetupAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-print-action-PrintAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-CloseProject.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-CustomizeProject.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-NewFile.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-NewProject.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-OpenProject.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-RecentProjects.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-actions-CloseAllProjectsAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-actions-CloseOtherProjectsAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-groups-GroupsMenu.shadow_hidden"/>
+            <file name="org-openide-actions-PageSetupAction.instance_hidden"/>
+            <file name="org-openide-actions-PrintAction.instance_hidden"/>
+            <file name="org-openide-actions-SaveAction.instance_hidden"/>
+            <file name="org-openide-actions-SaveAllAction.instance_hidden"/>
+            <file name="org-openide-actions-SaveAsAction.shadow_hidden"/>
+        </folder>
+        <folder name="Appoggi">
+            <attr name="position" intvalue="200"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddAppoggioAction.instance" url="it-ccprogetti-spalleponte-netbeans-actions-AddAppoggioAction_2.instance"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-AddAppoggioAction.instance/it-ccprogetti-spalleponte-netbeans-actions-EliminaAppoggioAction.shadow" boolvalue="true"/>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-AddAppoggioAction.instance/javax-swing-JSeparator.instance" boolvalue="true"/>
+            <attr name="javax-swing-JSeparator.instance/it-ccprogetti-spalleponte-netbeans-actions-EliminaAppoggioAction.shadow" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-EliminaAppoggioAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-EliminaAppoggioAction.instance"/>
+            </file>
+        </folder>
+        <folder name="Carichi">
+            <attr name="position" intvalue="300"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddCaricoAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-AddCaricoAction.instance"/>
+                <attr name="position" intvalue="0"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-DeleteAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-DeleteCaricoAction.instance"/>
+                <attr name="position" intvalue="1"/>
+            </file>
+            <file name="javax-swing-JSeparator_1.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="2"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddCombinazioneAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-AddCombinazioneAction.instance"/>
+                <attr name="position" intvalue="3"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-DeleteCombinazioneAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-DeleteCombinazioneAction.instance"/>
+                <attr name="position" intvalue="4"/>
+            </file>
+            
+            
+            
+        </folder>
+        <folder name="Fondazione">
+            <attr name="position" intvalue="500"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddPaloAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-AddPaloAction.instance"/>
+                <attr name="position" intvalue="0"/>
+                
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-DeletePaloAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-DeletePaloAction.instance"/>
+                <attr name="position" intvalue="1"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-RimuoviPaliAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-RimuoviPaliAction.instance"/>
+                <attr name="position" intvalue="2"/>
+            </file>
+            
+            <file name="javax-swing-JSeparator_4.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="3"/>
+            </file>
+            
+            
+            
+        </folder>
+        <folder name="Portanza">
+            <attr name="position" intvalue="550"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddStratoTerrenoAction.shadow" url="it-ccprogetti-spalleponte-netbeans-actions-AddStratoTerrenoAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-AddStratoTerrenoAction.instance"/>
+                <attr name="position" intvalue="100"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddVerticaleAction.shadow" url="it-ccprogetti-spalleponte-netbeans-actions-AddVerticaleAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-AddVerticaleAction.instance"/>
+                <attr name="position" intvalue="0"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-RemoveStratoAction.shadow" url="it-ccprogetti-spalleponte-netbeans-actions-RemoveStratoAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-RemoveStratoAction.instance"/>
+                <attr name="position" intvalue="200"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-RemoveVerticaleAction.shadow" url="it-ccprogetti-spalleponte-netbeans-actions-RemoveVerticaleAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-RemoveVerticaleAction.instance"/>
+                <attr name="position" intvalue="12"/>
+            </file>
+            <file name="progetto-presentation-nb-action-separatorBefore.instance" url="progetto-presentation-nb-action-separatorBefore.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="50"/>
+            </file>
+        </folder>
+        <file name="Refactoring_hidden"/>
+        <file name="RunProject_hidden"/>
+        <file name="Source_hidden"/>
+        <file name="Spacer.instance_hidden"/>
+        <folder name="Utility">
+            <attr name="position" intvalue="625"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-CalcoloAutomaticoNqAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-CalcoloAutomaticoNqAction.instance"/>
+                <attr name="position" intvalue="0"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-WizardPalificataAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-WizardPalificataAction.instance"/>
+                <attr name="position" intvalue="1"/>
+            </file>
+        </folder>
+        <folder name="Elabora">
+            <attr name="position" intvalue="600"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-separatorBefore.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+            </file>
+            <attr name="it-ccprogetti-spalleponte-netbeans-separatorBefore.instance/it-ccprogetti-spalleponte-netbeans-actions-ElaboraAction.shadow" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-ElaboraAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-ElaboraAction.instance"/>
+            </file>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-ElaboraAction.shadow/it-ccprogetti-spalleponte-netbeans-separatorAfter.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-separatorAfter.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+            </file>
+            <attr name="it-ccprogetti-spalleponte-netbeans-separatorAfter.instance/it-ccprogetti-spalleponte-netbeans-actions-RelazioneAction.shadow" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-RelazioneAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-RelazioneAction.instance"/>
+            </file>
+            <attr name="it-ccprogetti-spalleponte-netbeans-actions-RelazioneAction.shadow/it-ccprogetti-spalleponte-netbeans-actions-separatorAfter.instance" boolvalue="true"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-separatorAfter.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+            </file>
+        </folder>
+        
+        <folder name="Finestra">
+            <attr name="position" intvalue="650"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-view-CarichiViewAction.instance" url="it-ccprogetti-spalleponte-netbeans-view-CarichiViewAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-view-FondazioniViewAction.instance" url="it-ccprogetti-spalleponte-netbeans-view-FondazioniViewAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-view-SpallaViewAction.instance" url="it-ccprogetti-spalleponte-netbeans-view-SpallaViewAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-view-PortanzaViewAction.instance" url="it-ccprogetti-spalleponte-netbeans-view-PortanzaViewAction.instance"/>
+        </folder>
+        <file name="GoTo_hidden"/>
+        <folder name="Help">
+            <attr name="position" intvalue="700"/>
+            <file name="Separator1.instance_hidden"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-activation-TogliChiaveAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Help/it-ccprogetti-spalleponte-netbeans-actions-activation-TogliChiaveAction.instance"/>
+                <attr name="position" intvalue="200"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-activation-FiloDirettoAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Help/it-ccprogetti-spalleponte-netbeans-actions-activation-FiloDirettoAction.instance"/>
+                <attr name="position" intvalue="600"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-activation-FlaccovioWebAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Help/it-ccprogetti-spalleponte-netbeans-actions-activation-FlaccovioWebAction.instance"/>
+                <attr name="position" intvalue="400"/>
+            </file>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-activation-HelpActivationAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Help/it-ccprogetti-spalleponte-netbeans-actions-activation-GuidaUtenteAction.instance"/>
+                <attr name="position" intvalue="100"/>
+            </file>     
+            
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-activation-MyAboutAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Help/it-ccprogetti-spalleponte-netbeans-actions-activation-MyAboutAction.instance"/>
+                <attr name="position" intvalue="700"/>
+            </file>                 
+                        
+            
+           
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-activation-separatorBefore.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="650"/>
+            </file>
+            <file name="javax-swing-JSeparator-help2.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="550"/>
+            </file>
+            <file name="javax-swing-JSeparator.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="150"/>
+            </file>
+            <file name="master-help.xml_hidden"/>
+              <file name="netbeans-kb.url_hidden"/>
+            <file name="org-netbeans-core-actions-AboutAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-autoupdate-ui-actions-CheckForUpdatesAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-bugzilla-exceptionreporter-ReportNBIssueAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-usersguide-master.xml_hidden"/>
+            <file name="org-netbeans-modules-welcome-ShowWelcomeAction.shadow_hidden"/>
+            <file name="shortcuts.xml_hidden"/>
+        </folder>
+        <file name="Tools_hidden"/>
+        <file name="Versioning_hidden"/>
+        <file name="View_hidden"/>
+        <file name="Window_hidden"/>
+        <file name="org-netbeans-modules-quicksearch-QuickSearchAction.shadow_hidden"/>
+    </folder>
+    <folder name="Services">
+        <folder name="JavaHelp"/>
+    </folder>
+    <folder name="Shortcuts">
+        <file name="D-A.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-AddAppoggioAction.instance"/>
+        </file>
+        <file name="D-E.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-ElaboraAction.instance"/>
+        </file>
+        <file name="D-P.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-AddPaloAction.instance"/>
+        </file>
+        <file name="D-W.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-AddCaricoAction.instance"/>
+        </file>
+        <file name="D-Q.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-AddCombinazioneAction.instance"/>
+        </file>
+        <file name="D-O.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-OpenAction.instance"/>
+        </file>
+        <file name="D-S.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/it-ccprogetti-spalleponte-netbeans-actions-SaveAction.instance"/>
+        </file>
+    </folder>
+    <folder name="Toolbars">
+        <attr name="it-ccprogetti-spalleponte-netbeans-actions-PrintAction.instance/File" boolvalue="true"/>
+        <file name="Build_hidden"/>
+        <file name="Clipboard_hidden"/>
+        <file name="Debug_hidden"/>
+        <file name="Debugging.xml_hidden"/>
+        <file name="Edit_hidden"/>
+        <file name="File_hidden"/>
+        <file name="Memory_hidden"/>
+        <folder name="Standard">
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddAppoggioAction.instance" url="it-ccprogetti-spalleponte-netbeans-actions-AddAppoggioAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddCaricoAction.instance" url="it-ccprogetti-spalleponte-netbeans-actions-AddCaricoAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddCombinazioneAction.instance" url="it-ccprogetti-spalleponte-netbeans-actions-AddCombinazioneAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-AddPaloAction.instance" url="it-ccprogetti-spalleponte-netbeans-actions-AddPaloAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-WizardPalificataAction.instance" url="it-ccprogetti-spalleponte-netbeans-actions-WizardPalificataAction.instance"/>
+            
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-ElaboraAction.instance" url="it-ccprogetti-spalleponte-netbeans-actions-ElaboraAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-OpenAction.instance" url="it-ccprogetti-spalleponte-netbeans-actions-OpenAction.instance"/>
+            <file name="it-ccprogetti-spalleponte-netbeans-actions-SaveAction.instance" url="it-ccprogetti-spalleponte-netbeans-actions-SaveAction.instance"/>
+        </folder>
+        <file name="Standard.xml" url="Standard.xml"/>
+        <file name="UndoRedo_hidden"/>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="CarichiViewTopComponent.settings" url="CarichiViewTopComponentSettings.xml"/>
+            <file name="FondazioniViewTopComponent.settings" url="FondazioniViewTopComponentSettings.xml"/>
+            <file name="SpallaViewTopComponent.settings" url="SpallaViewTopComponentSettings.xml"/>
+            <file name="PortanzaViewTopComponent.settings" url="PortanzaViewTopComponentSettings.xml"/>
+            
+        </folder>
+        <folder name="Modes">
+            <folder name="editor">
+                <file name="CarichiViewTopComponent.wstcref" url="CarichiViewTopComponentWstcref.xml">
+                    <attr name="position" intvalue="200"/>
+                </file>
+                <file name="FondazioniViewTopComponent.wstcref" url="FondazioniViewTopComponentWstcref.xml">
+                    <attr name="position" intvalue="300"/>
+                </file>
+                <file name="SpallaViewTopComponent.wstcref" url="SpallaViewTopComponentWstcref.xml">
+                    <attr name="position" intvalue="100"/>
+                </file>
+                <file name="PortanzaViewTopComponent.wstcref" url="PortanzaViewTopComponentWstcref.xml">
+                    <attr name="position" intvalue="400"/>
+                </file>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>

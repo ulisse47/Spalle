@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.apisupport.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/nb-module-project/3">
+            <code-name-base>org.xmlpull.v1</code-name-base>
+            <suite-component/>
+            <module-dependencies/>
+            <public-packages>
+                <package>javax.xml.namespace</package>
+                <package>org.xmlpull.mxp1</package>
+                <package>org.xmlpull.mxp1_serializer</package>
+                <package>org.xmlpull.v1</package>
+                <package>org.xmlpull.v1.builder</package>
+                <package>org.xmlpull.v1.builder.adapter</package>
+                <package>org.xmlpull.v1.builder.impl</package>
+                <package>org.xmlpull.v1.dom2_builder</package>
+                <package>org.xmlpull.v1.parser_pool</package>
+                <package>org.xmlpull.v1.sax2</package>
+                <package>org.xmlpull.v1.util</package>
+                <package>org.xmlpull.v1.wrapper</package>
+                <package>org.xmlpull.v1.wrapper.classic</package>
+            </public-packages>
+            <class-path-extension>
+                <runtime-relative-path>ext/xpp3-1.1.4c.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/xpp3-1.1.4c.jar</binary-origin>
+            </class-path-extension>
+        </data>
+    </configuration>
+</project>
