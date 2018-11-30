@@ -32,7 +32,7 @@ import org.openide.util.Exceptions;
  * @author Marco
  */
 public class dlgAttivaSoftware extends javax.swing.JDialog {
-
+    private static String Maya_Path ="/AppData/Roaming/.spalle/dev/Maya.data";
     String code;
 
     /**
@@ -330,7 +330,7 @@ public class dlgAttivaSoftware extends javax.swing.JDialog {
            JFileChooser chooser;
 
         chooser = new JFileChooser();
-        chooser.setCurrentDirectory(new java.io.File("."));
+        chooser.setCurrentDirectory(new java.io.File(System.getProperty("user.home") + "/AppData/Roaming/"));
         chooser.setDialogTitle("Directory di installazione");
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         //
@@ -347,7 +347,7 @@ public class dlgAttivaSoftware extends javax.swing.JDialog {
 
             if (file != null) {
                 JOptionPane.showMessageDialog(this, "File attivazione trovato");
-                File dest = new File(System.getProperty("user.dir") + "\\Maya.data");
+                File dest = new File(System.getProperty("user.home") + Maya_Path);
 
                 try {
                     if (dest.exists()) {
@@ -382,7 +382,7 @@ public class dlgAttivaSoftware extends javax.swing.JDialog {
      public File cercaFile(File from, String nome) {
         //utilizziamo per la ricerca un filtro
         // create new filename filter
-        File original = new File(System.getProperty("user.dir") + "\\Maya.data");
+        File original = new File(System.getProperty("user.home") + Maya_Path);
 
         File fl;
         File[] files = from.listFiles(new Filter(nome));

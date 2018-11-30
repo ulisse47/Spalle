@@ -1,1 +1,10 @@
 /nbproject/private/
+/build/
+/modules/itext/build/
+/ProductActivation/build/
+/modules/commons-collections/build/
+/modules/commons-beanutils/build/
+/modules/jasperreports/build/
+/xpp3-1.1.4c/build/
+/xstream/build/
+/spallePonte/build/
