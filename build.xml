@@ -9,12 +9,14 @@
     <target name="build-zip" depends="suite.build-zip">       
         <zip destfile="dist/${app.name}.zip" update= "true"> 
             <zipfileset dir="." includes="help/**" />
+            <zipfileset dir="." includes="Ut.cmd" />
         </zip> 
         <!--   </target> 
            <target name="build-exe" depends="suite.build-exe"> 
         -->    
         <zip destfile="dist/${app.name}-windows.exe" update= "true"> 
-            <zipfileset dir="." includes="help/**" /> 
+            <zipfileset dir="." includes="help/**" />             
+            <zipfileset dir="." includes="Ut.cmd" />
         </zip>      
     </target>    
 </project>
