@@ -390,6 +390,12 @@
                 <file name="PortanzaViewTopComponent.wstcref" url="PortanzaViewTopComponentWstcref.xml">
                     <attr name="position" intvalue="400"/>
                 </file>
+                <file name="Welcome.wstcref_hidden"/>
+            </folder>
+            <folder name="explorer">
+                <file name="projectTabLogical_tc.wstcref_hidden"/>
+                <file name="projectTab_tc.wstcref_hidden"/>
+                <file name="services.wstcref_hidden"/>
             </folder>
         </folder>
     </folder>
